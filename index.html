@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Dra. Casas</title>
+<meta name="description" content="Dra. Casas: limpieza profesional de casas en todo Puerto Rico. Limpieza residencial y comercial, shampoo de muebles, fumigación, pintura y aires acondicionados. Cotiza por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Outfit:wght@400;500;600&display=swap">
+<style>
+/* Layout: escena sticky de limpieza (scroll storytelling) → banda de prueba → bento de servicios → historia → pasos → confianza → cotizador con vista previa de WhatsApp. Un solo look claro, a propósito (marca de cielo y crema). */
+:root{
+  --sky:#C9EBFE; --sky2:#8FD3FB; --blue:#2C86C4; --blue-d:#1F6FA8;
+  --ink:#1D3552; --mute:#53677F; --cream:#FFF6D8; --paper:#FFFDF6;
+  --butter:#FFD86B; --grime:#7E6A4F; --wa:#1FA855; --line:#D9E9F5;
+  --f-display:"Fredoka","Nunito","Arial Rounded MT Bold",system-ui,sans-serif;
+  --f-body:"Outfit","Segoe UI",system-ui,-apple-system,sans-serif;
+  --r:22px; --ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3{font-family:var(--f-display);line-height:1.05;margin:0;text-wrap:balance;font-weight:600;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1220px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 17px/1 var(--f-body);padding:16px 24px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 24px -10px rgba(44,134,196,.7)}
+.btn-primary:hover{background:var(--blue-d);box-shadow:0 16px 30px -12px rgba(44,134,196,.8)}
+.btn-ghost{background:rgba(255,255,255,.7);color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 12px 26px -12px rgba(31,168,85,.8)}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* ---------- Header ---------- */
+.top{position:absolute;inset:0 0 auto;z-index:20;padding-top:18px}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-display);font-weight:700;font-size:24px;color:var(--blue)}
+.brand svg{width:46px;height:46px}
+.brand span small{display:block;font-family:var(--f-body);font-weight:500;font-size:12px;color:var(--mute);letter-spacing:.06em;margin-top:-2px}
+.nav{display:flex;align-items:center;gap:26px;font-weight:500}
+.nav a{text-decoration:none;color:var(--ink)}
+.nav a:not(.btn):hover{color:var(--blue)}
+.nav .btn{padding:12px 20px;font-size:15px}
+
+/* ---------- Escena ---------- */
+.scene{position:relative;height:320vh;background:linear-gradient(180deg,var(--cream) 0%,#FFF1C4 100%)}
+.sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;gap:24px}
+.sticky .copy{padding-left:max(20px,env(safe-area-inset-left,0px));padding-left:max(20px,calc((100vw - 1220px)/2 + 20px));display:grid;gap:22px;align-content:center;padding-top:60px}
+.copy h1{font-size:clamp(40px,5.2vw,76px);color:var(--ink)}
+.copy h1 em{font-style:normal;color:var(--blue);position:relative;white-space:nowrap}
+.copy h1 em::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.06em;height:.22em;background:var(--butter);z-index:-1;border-radius:6px;transform-origin:left;transform:scaleX(var(--shine,0));transition:transform .4s var(--ease)}
+.copy .sub{font-size:19px;color:var(--mute);max-width:34ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.meter{display:grid;gap:8px;max-width:340px}
+.meter-row{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;font-size:14px}
+.meter-row b{font-family:var(--f-display);font-size:26px;color:var(--blue);font-variant-numeric:tabular-nums}
+.bar{height:10px;border-radius:99px;background:#F1E2B0;overflow:hidden}
+.bar i{display:block;height:100%;width:calc(var(--m,0)*1%);background:linear-gradient(90deg,var(--sky2),var(--blue));border-radius:inherit}
+.status{font-size:14px;color:var(--mute)}
+.stage{position:relative;height:100%;display:flex;align-items:center;padding-right:max(20px,env(safe-area-inset-right,0px));padding-top:60px}
+.room{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 40px rgba(29,53,82,.16));border-radius:28px}
+.hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:13px;font-weight:500;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:6px;transition:opacity .3s}
+.hint i{width:22px;height:34px;border:2px solid var(--mute);border-radius:12px;position:relative}
+.hint i::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:7px;margin-left:-2px;border-radius:2px;background:var(--mute);animation:wheel 1.6s infinite}
+@keyframes wheel{0%{transform:translateY(0);opacity:1}70%{transform:translateY(10px);opacity:0}100%{opacity:0}}
+.spark{transition:opacity .4s,transform .4s var(--ease);transform-box:fill-box;transform-origin:center}
+.spark.on{animation:twinkle 1.8s infinite ease-in-out}
+@keyframes twinkle{50%{transform:scale(.6) rotate(20deg)}}
+.foam circle{animation:foam 1s infinite ease-out}
+.foam circle:nth-child(2){animation-delay:.25s}.foam circle:nth-child(3){animation-delay:.5s}.foam circle:nth-child(4){animation-delay:.75s}
+@keyframes foam{0%{transform:translateY(0);opacity:.95}100%{transform:translateY(-34px);opacity:0}}
+.m-intro{animation:enter 1.1s .2s var(--ease) both}
+@keyframes enter{from{transform:translateX(-90px);opacity:0}}
+
+/* ---------- Banda de prueba ---------- */
+.proof{background:var(--ink);color:#fff;padding-block:44px}
+.proof .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.proof div div{display:grid;gap:4px}
+.proof b{font-family:var(--f-display);font-weight:600;font-size:clamp(30px,3.4vw,46px);color:var(--sky2);line-height:1}
+.proof span{color:#C5D6E8;font-size:15px}
+
+section{scroll-margin-top:20px}
+.sec{padding-block:clamp(72px,10vw,130px)}
+.sec-head{display:grid;gap:14px;max-width:720px;margin-bottom:48px}
+.sec-head h2{font-size:clamp(36px,4.6vw,60px)}
+.sec-head p{color:var(--mute);font-size:19px;max-width:56ch}
+
+/* ---------- Servicios ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.svc{position:relative;overflow:hidden;background:#fff;border-radius:var(--r);padding:28px;display:grid;align-content:space-between;gap:28px;min-height:230px;box-shadow:inset 0 0 0 1.5px var(--line);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.svc:hover{transform:translateY(-6px);box-shadow:inset 0 0 0 1.5px var(--sky2),0 24px 40px -24px rgba(44,134,196,.45)}
+.svc h3{font-size:26px}
+.svc p{color:var(--mute);font-size:16px;margin-top:8px;max-width:40ch}
+.svc .ico{width:68px;height:68px;transition:transform .5s var(--ease)}
+.svc:hover .ico{transform:rotate(-8deg) scale(1.08)}
+.svc .b{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,var(--sky) 70%);opacity:0;transition:transform .9s var(--ease),opacity .5s}
+.svc:hover .b{opacity:.9}
+.svc .b1{width:46px;height:46px;right:24px;bottom:-50px}.svc:hover .b1{transform:translateY(-120px)}
+.svc .b2{width:26px;height:26px;right:84px;bottom:-30px;transition-delay:.08s}.svc:hover .b2{transform:translateY(-150px)}
+.svc .b3{width:16px;height:16px;right:54px;bottom:-20px;transition-delay:.15s}.svc:hover .b3{transform:translateY(-90px)}
+.s1{grid-column:span 3;grid-row:span 2;background:var(--sky);box-shadow:none}
+.s1 h3{font-size:clamp(32px,3.4vw,44px)}
+.s1 .ico{width:110px;height:110px}
+.s2,.s3{grid-column:span 3}
+.s4,.s5{grid-column:span 3}
+.tag{display:inline-block;margin-top:14px;font-size:13px;font-weight:600;background:var(--butter);color:var(--ink);padding:6px 12px;border-radius:99px}
+
+/* ---------- Historia ---------- */
+.story{background:var(--sky);position:relative;overflow:hidden}
+.story .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,90px);align-items:center}
+.story-art{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:center}
+.story-art .disc{position:absolute;inset:6%;border-radius:50%;background:var(--cream)}
+.story-art svg{position:absolute;inset:0;width:100%;height:100%}
+.story-art .big{position:absolute;left:-2%;bottom:4%;background:var(--ink);color:#fff;border-radius:20px;padding:16px 20px;display:grid}
+.story-art .big b{font-family:var(--f-display);font-size:44px;line-height:1;color:var(--butter)}
+.story-art .big span{font-size:14px;color:#C5D6E8}
+.story h2{font-size:clamp(34px,4.2vw,56px)}
+.story .txt{display:grid;gap:20px}
+.story .txt p{font-size:19px;color:#2E4866;max-width:54ch}
+.story .txt p strong{color:var(--ink)}
+.float{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff 0,rgba(255,255,255,.4) 45%,rgba(255,255,255,.08) 70%);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.8);animation:drift 14s infinite ease-in-out}
+@keyframes drift{50%{transform:translateY(-30px) translateX(10px)}}
+
+/* ---------- Pasos ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:s}
+.step{background:var(--cream);border-radius:var(--r);padding:30px;display:grid;gap:12px;align-content:start}
+.step .n{font-family:var(--f-display);font-weight:700;font-size:20px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff}
+.step h3{font-size:25px}
+.step p{color:var(--mute);font-size:16px}
+
+/* ---------- Confianza ---------- */
+.trust{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.t-hero{grid-row:span 2;background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(28px,4vw,48px);display:grid;gap:18px;align-content:end;min-height:340px;position:relative;overflow:hidden}
+.t-hero h3{font-size:clamp(30px,3.2vw,42px)}
+.t-hero p{color:#C5D6E8;font-size:18px;max-width:42ch}
+.t-hero .van{position:absolute;right:-20px;top:20px;width:220px;opacity:.95}
+.t-item{border-radius:var(--r);padding:26px 28px;box-shadow:inset 0 0 0 1.5px var(--line);display:grid;gap:6px}
+.t-item h3{font-size:22px}
+.t-item p{color:var(--mute);font-size:16px}
+.rules{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.rule{display:grid;gap:4px;padding:22px 24px;border-radius:18px;background:#F4F9FD}
+.rule b{font-family:var(--f-display);font-size:30px;color:var(--blue);line-height:1}
+.rule span{font-weight:600}
+.rule p{color:var(--mute);font-size:15px}
+
+/* ---------- Cotizador ---------- */
+.quote{background:linear-gradient(180deg,var(--sky) 0%,#E9F6FF 100%)}
+.q-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;align-items:start}
+form.card{background:#fff;border-radius:28px;padding:clamp(22px,3.4vw,40px);display:grid;gap:26px;box-shadow:0 30px 60px -40px rgba(29,53,82,.45)}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.field{display:grid;gap:8px;min-width:0}
+.field>label,.legend{font-weight:600;font-size:15px}
+.legend small,.field>label small{font-weight:400;color:var(--mute)}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:10px;min-width:0}
+input[type=text],textarea{font:inherit;font-size:16px;color:var(--ink);background:#F6FAFD;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;width:100%;transition:border-color .2s,background .2s}
+input[type=text]:focus,textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+textarea{min-height:92px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:99px;background:#F1F7FC;font-size:15px;font-weight:500;cursor:pointer;box-shadow:inset 0 0 0 1.5px var(--line);transition:all .2s var(--ease);user-select:none}
+.chip span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s}
+.chip input:checked+span{background:var(--blue);color:#fff;box-shadow:none}
+.chip input:checked+span::before{background:var(--butter)}
+.chip input:focus-visible+span{outline:3px solid var(--blue);outline-offset:2px}
+.stepper{display:flex;align-items:center;justify-content:space-between;background:#F6FAFD;border:1.5px solid var(--line);border-radius:14px;padding:6px}
+.stepper button{width:40px;height:40px;border-radius:10px;border:0;background:#fff;color:var(--blue);font:600 22px/1 var(--f-display);cursor:pointer;box-shadow:0 1px 0 var(--line)}
+.stepper button:active{transform:scale(.94)}
+.stepper output{font-family:var(--f-display);font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.toggle{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:15px}
+.toggle input{position:absolute;opacity:0}
+.toggle i{flex:none;width:44px;height:26px;border-radius:99px;background:var(--line);position:relative;transition:background .2s;margin-top:1px}
+.toggle i::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .25s var(--ease);box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle input:checked+i{background:var(--blue)}
+.toggle input:checked+i::after{transform:translateX(18px)}
+.toggle input:focus-visible+i{outline:3px solid var(--blue);outline-offset:2px}
+.toggle b{display:block;font-weight:600}
+.toggle span{color:var(--mute)}
+.err{color:#C2412D;font-size:14px;font-weight:500}
+.send-row{display:grid;gap:12px}
+.send-row .btn{justify-content:center;font-size:18px;padding:18px 24px}
+.fine{font-size:14px;color:var(--mute)}
+.preview{position:sticky;top:24px;display:grid;gap:14px}
+.phone{background:#E9E1D6;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(29,53,82,.5);border:8px solid #fff}
+.phone-top{background:#0F5E4E;color:#fff;display:flex;align-items:center;gap:10px;padding:12px 16px}
+.phone-top .av{width:36px;height:36px;border-radius:50%;background:var(--cream);display:grid;place-items:center}
+.phone-top .av svg{width:30px;height:30px}
+.phone-top b{display:block;font-size:15px}
+.phone-top small{font-size:12px;opacity:.8}
+.chat{padding:18px 14px 22px;min-height:300px;display:grid;align-content:end}
+.bubble{background:#DCF8C6;border-radius:14px 4px 14px 14px;padding:12px 14px 22px;font-size:14.5px;line-height:1.45;white-space:pre-wrap;word-break:break-word;position:relative;justify-self:end;max-width:100%;color:#162B22;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.bubble::after{content:"Ahora ✓✓";position:absolute;right:10px;bottom:5px;font-size:11px;color:#6A8577}
+.preview .fine{text-align:center}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink);color:#C5D6E8;padding-block:56px 40px}
+footer .wrap{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:32px}
+footer h3{font-size:34px;color:#fff;margin-bottom:10px}
+footer h4{margin:0 0 10px;color:#fff;font:600 14px var(--f-body);letter-spacing:.12em;text-transform:uppercase}
+footer a{color:#fff}
+.num{font-family:var(--f-display);font-size:24px;color:#fff;user-select:all}
+.credit{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ---------- Nubecita que acompaña ---------- */
+.buddy{position:fixed;right:max(18px,calc(env(safe-area-inset-right,0px) + 18px));top:0;z-index:30;display:flex;align-items:center;gap:8px;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .4s;will-change:transform}
+.buddy.on{opacity:1;pointer-events:auto}
+.buddy svg{width:92px;height:auto;overflow:visible;filter:drop-shadow(0 10px 14px rgba(29,53,82,.2))}
+.buddy .say{order:-1;background:#fff;color:var(--ink);font:600 14px/1.25 var(--f-body);padding:10px 14px;border-radius:16px 16px 4px 16px;box-shadow:0 10px 24px -12px rgba(29,53,82,.45);max-width:170px;transition:transform .3s var(--ease),opacity .3s}
+.buddy .say.pop{animation:pop .45s var(--ease)}
+@keyframes pop{0%{transform:scale(.6);opacity:0}}
+.buddy .leg{transform-box:fill-box;transform-origin:top center}
+.buddy.walk .leg-l{animation:leg .35s infinite alternate ease-in-out}
+.buddy.walk .leg-r{animation:leg .35s infinite alternate-reverse ease-in-out}
+@keyframes leg{from{transform:rotate(14deg)}to{transform:rotate(-14deg)}}
+.buddy .arm-r{transform-box:view-box;transform-origin:168px 112px;animation:wave 2.4s infinite ease-in-out}
+@keyframes wave{0%,70%,100%{transform:rotate(0)}78%{transform:rotate(-22deg)}86%{transform:rotate(10deg)}94%{transform:rotate(-16deg)}}
+
+.pre{transform:translateY(22px);opacity:.001;transition:transform .9s var(--ease),opacity .9s var(--ease)}
+.pre.in{transform:none;opacity:1}
+
+/* ---------- Tablet ---------- */
+@media (max-width:1020px){
+  .nav a:not(.btn){display:none}
+  .sticky{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:8px;align-items:stretch}
+  .sticky .copy{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));padding-top:96px;gap:16px}
+  .copy .sub{max-width:52ch}
+  .stage{padding-left:max(20px,env(safe-area-inset-left,0px));padding-top:0;padding-bottom:70px}
+  .proof .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .story .wrap,.q-grid{grid-template-columns:1fr}
+  .story-art{max-width:380px}
+  .preview{position:static}
+  .trust{grid-template-columns:1fr}
+  .t-hero{grid-row:auto}
+}
+/* ---------- Teléfono: la cámara sigue a la nubecita ---------- */
+@media (max-width:640px){
+  body{font-size:16px}
+  .scene{height:280vh}
+  .brand{font-size:21px}.brand svg{width:40px;height:40px}
+  .sticky .copy{padding-top:84px;gap:14px}
+  .copy h1{font-size:clamp(34px,10vw,44px)}
+  .copy .sub{display:none}
+  .ctas .btn-ghost{display:none}
+  .ctas .btn{width:100%;justify-content:center}
+  .meter{max-width:none}
+  .stage{padding-inline:0;padding-bottom:64px;overflow:hidden;align-items:center}
+  .room{width:200%;max-width:none;border-radius:0;flex:none}
+  .bento{grid-template-columns:1fr}
+  .s1,.s2,.s3,.s4,.s5{grid-column:auto;grid-row:auto}
+  .svc{min-height:0}
+  .steps,.rules,.row2{grid-template-columns:1fr}
+  footer .wrap{grid-template-columns:1fr}
+  .buddy{top:auto;bottom:max(14px,calc(env(safe-area-inset-bottom,0px) + 14px));right:max(12px,calc(env(safe-area-inset-right,0px) + 12px))}
+  .buddy svg{width:70px}
+  .t-hero .van{width:150px;opacity:.5}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .scene{height:auto}
+  .sticky{position:relative;height:auto;min-height:0;padding-bottom:40px}
+  .hint{display:none}
+  .pre{transform:none;opacity:1}
+}
+</style>
+</head>
+<body>
+
+<!-- Nubecita (el logo) en su propio sistema de coordenadas: 200 de ancho, pies en y=208 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><g id="mascot">
+  <g class="leg leg-l"><path d="M84 148 V196 q0 10 -12 10" fill="none" stroke="#2C86C4" stroke-width="7" stroke-linecap="round"/></g>
+  <g class="leg leg-r"><path d="M116 148 V196 q0 10 12 10" fill="none" stroke="#2C86C4" stroke-width="7" stroke-linecap="round"/></g>
+  <path d="M40 112 C26 120 22 134 16 150" fill="none" stroke="#2C86C4" stroke-width="7" stroke-linecap="round"/>
+  <path d="M52 152 C24 152 16 120 36 108 C26 80 52 58 77 68 C86 40 126 38 137 62 C163 54 188 78 175 104 C196 114 190 152 160 152 Z" fill="#9ED9FC"/>
+  <path d="M30 124 C34 146 48 152 60 152 L158 152 C178 152 192 140 188 120 C182 136 166 140 146 136 C126 150 98 152 80 140 C62 144 40 140 30 124 Z" fill="#7CCBF7"/>
+  <circle cx="70" cy="64" r="15" fill="#E8F7FF" stroke="#CDEBFB" stroke-width="2"/>
+  <circle cx="92" cy="50" r="10" fill="#E8F7FF" stroke="#CDEBFB" stroke-width="2"/>
+  <circle cx="148" cy="142" r="11" fill="#E8F7FF" stroke="#CDEBFB" stroke-width="2"/>
+  <path d="M76 82 q7 -5 14 0 M110 82 q7 -5 14 0" fill="none" stroke="#2C86C4" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="84" cy="100" r="12" fill="#fff"/><circle cx="116" cy="100" r="12" fill="#fff"/>
+  <circle cx="86" cy="101" r="7.5" fill="#2C86C4"/><circle cx="118" cy="101" r="7.5" fill="#2C86C4"/>
+  <circle cx="83.5" cy="98" r="2.6" fill="#fff"/><circle cx="115.5" cy="98" r="2.6" fill="#fff"/>
+  <ellipse cx="68" cy="116" rx="9" ry="4.5" fill="#7CCBF7"/><ellipse cx="132" cy="116" rx="9" ry="4.5" fill="#7CCBF7"/>
+  <path d="M89 120 q11 11 22 0" fill="none" stroke="#2C86C4" stroke-width="4" stroke-linecap="round"/>
+  <g class="arm-r">
+    <path d="M168 112 C182 104 188 92 190 74" fill="none" stroke="#2C86C4" stroke-width="7" stroke-linecap="round"/>
+    <rect x="176" y="50" width="30" height="22" rx="8" fill="#FFD86B" transform="rotate(-12 191 61)"/>
+    <rect x="176" y="50" width="30" height="8" rx="4" fill="#5FB97E" transform="rotate(-12 191 61)"/>
+  </g>
+</g></svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Dra. Casas, inicio">
+      <svg viewBox="0 0 200 220" aria-hidden="true" class="mini-m"></svg>
+      <span>Dra. Casas<small>LIMPIEZA DE CASAS PR</small></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Conócenos</a>
+      <a href="#como">Cómo funciona</a>
+      <a class="btn btn-primary" href="#cotizar">Cotizar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="scene" id="scene" aria-label="Presentación">
+    <div class="sticky">
+      <div class="copy">
+        <p class="eyebrow">Limpieza profesional · Toda la isla</p>
+        <h1>Llega a casa y encuéntrala <em>brillando.</em></h1>
+        <p class="sub">Limpieza residencial y comercial, shampoo de muebles, fumigación, pintura y aires acondicionados. Más de 6,000 hogares atendidos en Puerto Rico.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#cotizar">Solicitar cotización</a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <div class="meter" aria-live="off">
+          <div class="meter-row"><span>Nivel de limpieza</span><b id="pct">0%</b></div>
+          <div class="bar"><i id="barfill"></i></div>
+          <p class="status" id="status">Así encontramos muchas casas. Desliza y mira.</p>
+        </div>
+      </div>
+      <div class="stage" id="stage">
+        <svg class="room" id="room" viewBox="0 0 800 520" role="img" aria-label="Ilustración: la nubecita de Dra. Casas entra a una sala sucia y la deja limpia.">
+          <defs>
+            <clipPath id="roomclip"><rect width="800" height="520" rx="28"/></clipPath>
+            <g id="star"><path d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14Z" fill="#FFD86B"/></g>
+          </defs>
+          <g clip-path="url(#roomclip)">
+            <rect width="800" height="380" fill="#FFF3CC"/>
+            <path d="M0 0 H800 V36 H0Z" fill="#FBE7AE"/>
+            <rect y="380" width="800" height="140" fill="#F0D49E"/>
+            <g stroke="#E2BE80" stroke-width="2"><path d="M0 420 H800 M0 465 H800 M140 380 V420 M420 380 V420 M300 420 V465 M640 420 V465 M90 465 V520 M520 465 V520"/></g>
+            <rect y="372" width="800" height="10" fill="#E8C98E"/>
+            <!-- puerta -->
+            <rect x="18" y="140" width="96" height="236" rx="6" fill="#4C93C9"/>
+            <rect x="30" y="154" width="72" height="90" rx="4" fill="#5EA4D8"/><rect x="30" y="258" width="72" height="104" rx="4" fill="#5EA4D8"/>
+            <circle cx="98" cy="262" r="5" fill="#FFD86B"/>
+            <!-- cuadro -->
+            <g id="frame" style="transform-box:fill-box;transform-origin:50% 0">
+              <rect x="150" y="96" width="120" height="92" rx="6" fill="#fff" stroke="#2C86C4" stroke-width="6"/>
+              <path d="M162 176 L196 136 L218 160 L232 146 L258 176Z" fill="#9ED9FC"/><circle cx="238" cy="122" r="9" fill="#FFD86B"/>
+            </g>
+            <!-- ventana -->
+            <rect x="520" y="70" width="170" height="170" rx="10" fill="#C9EBFE" stroke="#fff" stroke-width="10"/>
+            <path d="M605 70 V240 M520 155 H690" stroke="#fff" stroke-width="8"/>
+            <path d="M540 120 q14 -10 28 0 q10 -8 20 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+            <!-- sofá -->
+            <rect x="262" y="246" width="250" height="78" rx="26" fill="#5FA6DA"/>
+            <rect x="250" y="300" width="274" height="62" rx="22" fill="#4C93C9"/>
+            <rect x="236" y="276" width="44" height="90" rx="20" fill="#5FA6DA"/><rect x="494" y="276" width="44" height="90" rx="20" fill="#5FA6DA"/>
+            <rect x="272" y="362" width="10" height="14" rx="3" fill="#2B5E86"/><rect x="492" y="362" width="10" height="14" rx="3" fill="#2B5E86"/>
+            <!-- planta -->
+            <path d="M742 300 C720 250 730 220 744 196 M750 300 C760 250 780 236 790 210 M746 300 C740 260 712 250 700 240" fill="none" stroke="#5FB97E" stroke-width="10" stroke-linecap="round"/>
+            <path d="M716 300 H780 L770 372 H726Z" fill="#E98A5E"/>
+
+            <!-- SUCIEDAD -->
+            <g class="dirt" data-x="185"><path d="M150 230 c20 -18 50 -10 62 6 c16 -6 34 6 26 24 c10 14 -8 32 -28 24 c-14 14 -42 10 -46 -8 c-22 0 -30 -30 -14 -46Z" fill="#7E6A4F" opacity=".55"/><path d="M168 300 c4 10 2 22 -2 30" stroke="#7E6A4F" stroke-width="7" stroke-linecap="round" opacity=".45" fill="none"/></g>
+            <g class="dirt pick" data-x="300"><path d="M286 452 c-6 -16 6 -26 18 -22 l20 8 c10 4 8 18 -4 18 l-18 0 c-8 0 -14 2 -16 -4Z" fill="#E98A5E"/><path d="M300 452 c16 4 30 -2 36 -14" stroke="#C66A44" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+            <g class="dirt" data-x="395"><ellipse cx="350" cy="320" rx="26" ry="12" fill="#7E6A4F" opacity=".5"/><ellipse cx="430" cy="332" rx="20" ry="9" fill="#7E6A4F" opacity=".45"/><ellipse cx="398" cy="270" rx="14" ry="8" fill="#7E6A4F" opacity=".4"/></g>
+            <g class="dirt pick" data-x="470"><rect x="452" y="440" width="44" height="34" rx="3" fill="#fff" transform="rotate(-14 474 457)"/><path d="M460 452 h26 M462 462 h18" stroke="#B8C7D4" stroke-width="3" transform="rotate(-14 474 457)"/></g>
+            <g class="dirt" data-x="600" data-jump="1"><path d="M532 84 h70 c10 30 -20 40 -6 70 c-30 -6 -40 20 -64 8Z" fill="#7E6A4F" opacity=".35"/><path d="M612 168 c24 -8 56 4 66 26 c-26 16 -50 8 -66 -26Z" fill="#7E6A4F" opacity=".3"/></g>
+            <g class="dirt" data-x="690"><path d="M600 470 c10 -22 60 -26 92 -14 c30 -10 64 6 54 22 c-14 20 -112 22 -140 10 c-12 -4 -10 -12 -6 -18Z" fill="#7E6A4F" opacity=".5"/><circle cx="640" cy="448" r="5" fill="#7E6A4F" opacity=".5"/></g>
+            <g class="dirt web" data-x="9999"><path d="M800 0 L720 0 M800 0 L740 40 M800 0 L780 80 M736 0 C748 14 758 22 776 18 C784 30 790 42 796 50 M764 0 C770 8 776 10 786 8 C790 16 794 22 800 26" stroke="#8C8C8C" stroke-width="2" fill="none" opacity=".7"/><circle cx="760" cy="44" r="5" fill="#333"/><path d="M760 39 V20" stroke="#555" stroke-width="1.2"/></g>
+            <rect id="dust" width="800" height="520" fill="#8F7D60" opacity=".22" style="mix-blend-mode:multiply"/>
+
+            <!-- brillos -->
+            <use href="#star" class="spark" data-for="0" x="214" y="214" opacity="0"/>
+            <use href="#star" class="spark" data-for="2" x="430" y="276" opacity="0"/>
+            <use href="#star" class="spark" data-for="4" x="560" y="110" opacity="0"/>
+            <use href="#star" class="spark" data-for="5" x="704" y="452" opacity="0"/>
+            <use href="#star" class="spark" data-for="6" x="776" y="64" opacity="0"/>
+
+            <g class="foam" id="foam" opacity="0"><circle cx="0" cy="0" r="8" fill="#fff" stroke="#BFE6FD" stroke-width="2"/><circle cx="16" cy="6" r="6" fill="#fff" stroke="#BFE6FD" stroke-width="2"/><circle cx="-14" cy="8" r="5" fill="#fff" stroke="#BFE6FD" stroke-width="2"/><circle cx="6" cy="-10" r="4" fill="#fff" stroke="#BFE6FD" stroke-width="2"/></g>
+
+            <g id="mWrap"><g class="m-intro"><g id="m"></g></g></g>
+            <g id="done" opacity="0" style="transition:opacity .4s">
+              <rect id="doneBox" x="0" y="0" width="118" height="48" rx="18" fill="#fff"/>
+              <text id="doneTxt" x="59" y="31" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="22" fill="#2C86C4">¡Lista!</text>
+            </g>
+          </g>
+        </svg>
+        <div class="hint" id="hint"><i></i>Desliza</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof" aria-label="Datos" data-say="¡Más de 6,000 hogares!">
+    <div class="wrap">
+      <div><div><b>+6,000</b><span>hogares atendidos</span></div></div>
+      <div><div><b>Toda la isla</b><span>llegamos a tu municipio</span></div></div>
+      <div><div><b>23.8 mil</b><span>seguidores en Instagram</span></div></div>
+      <div><div><b>5 en 1</b><span>servicios en un solo lugar</span></div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="servicios" data-say="Esto es lo que hacemos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Servicios</p>
+        <h2>Una sola llamada para toda la casa.</h2>
+        <p>Desde la limpieza de cada semana hasta ese mueble que ya no sabes cómo rescatar.</p>
+      </div>
+      <div class="bento">
+        <article class="svc s1">
+          <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path d="M46 4 L32 30" stroke="#2C86C4" stroke-width="5" stroke-linecap="round"/><path d="M20 30 H42 L50 56 H12Z" fill="#fff" stroke="#2C86C4" stroke-width="4" stroke-linejoin="round"/><path d="M20 40 L18 54 M28 40 L27 54 M36 40 L37 54 M43 40 L45 54" stroke="#2C86C4" stroke-width="3" stroke-linecap="round"/></svg>
+          <div><h3>Limpieza residencial y comercial</h3><p>Cocina, baños, cuartos, closets, ventanas, gabinetes, horno, marquesina y balcón. Tú eliges qué áreas y nosotros nos encargamos del resto, con técnicas especializadas para cada superficie.</p><span class="tag">El más pedido</span></div>
+          <i class="b b1"></i><i class="b b2"></i><i class="b b3"></i>
+        </article>
+        <article class="svc s2">
+          <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="16" width="36" height="16" rx="7" fill="#C9EBFE" stroke="#2C86C4" stroke-width="4"/><rect x="8" y="28" width="48" height="16" rx="7" fill="#9ED9FC" stroke="#2C86C4" stroke-width="4"/><path d="M14 44 V50 M50 44 V50" stroke="#2C86C4" stroke-width="4" stroke-linecap="round"/></svg>
+          <div><h3>Shampoo de muebles</h3><p>Sofás y butacas sin manchas ni olores, como el día que llegaron.</p></div>
+          <i class="b b1"></i><i class="b b2"></i><i class="b b3"></i>
+        </article>
+        <article class="svc s3">
+          <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="36" rx="12" ry="15" fill="#9ED9FC" stroke="#2C86C4" stroke-width="4"/><circle cx="32" cy="18" r="6" fill="#2C86C4"/><path d="M20 30 L10 26 M20 40 L10 42 M44 30 L54 26 M44 40 L54 42" stroke="#2C86C4" stroke-width="3.5" stroke-linecap="round"/><path d="M10 54 L54 10" stroke="#2C86C4" stroke-width="5" stroke-linecap="round"/></svg>
+          <div><h3>Fumigación y control de plagas</h3><p>Tu casa protegida de insectos y plagas, sin complicarte.</p></div>
+          <i class="b b1"></i><i class="b b2"></i><i class="b b3"></i>
+        </article>
+        <article class="svc s4">
+          <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="10" width="40" height="16" rx="8" fill="#9ED9FC" stroke="#2C86C4" stroke-width="4"/><path d="M48 18 H54 V34 H32 V42" fill="none" stroke="#2C86C4" stroke-width="4" stroke-linejoin="round"/><rect x="27" y="42" width="10" height="16" rx="4" fill="#2C86C4"/></svg>
+          <div><h3>Pintura de casas</h3><p>Paredes frescas por dentro y por fuera, con terminación limpia.</p></div>
+          <i class="b b1"></i><i class="b b2"></i><i class="b b3"></i>
+        </article>
+        <article class="svc s5">
+          <svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="12" width="52" height="24" rx="7" fill="#C9EBFE" stroke="#2C86C4" stroke-width="4"/><path d="M14 28 H50" stroke="#2C86C4" stroke-width="3" stroke-linecap="round"/><path d="M18 44 q4 4 0 8 M32 44 q4 4 0 8 M46 44 q4 4 0 8" fill="none" stroke="#2C86C4" stroke-width="3.5" stroke-linecap="round"/></svg>
+          <div><h3>Mantenimiento y limpieza de aires</h3><p>Limpieza profunda y desinfección de consolas. Mejor rendimiento, menos olores y un ambiente más saludable.</p><span class="tag">Pregunta por la promoción de consolas</span></div>
+          <i class="b b1"></i><i class="b b2"></i><i class="b b3"></i>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec story" id="nosotros" data-say="¡Hola! Te presento a Densy">
+    <i class="float" style="width:120px;height:120px;left:4%;top:8%"></i>
+    <i class="float" style="width:60px;height:60px;right:8%;top:14%;animation-delay:-4s"></i>
+    <i class="float" style="width:90px;height:90px;right:30%;bottom:6%;animation-delay:-8s"></i>
+    <div class="wrap">
+      <div class="story-art">
+        <div class="disc"></div>
+        <svg viewBox="-20 -10 240 240" aria-hidden="true" class="art-m"></svg>
+        <div class="big"><b>+6,000</b><span>hogares en todo Puerto Rico</span></div>
+      </div>
+      <div class="txt">
+        <p class="eyebrow">Conócenos</p>
+        <h2>Cuidamos tu casa como cuidamos la nuestra.</h2>
+        <p>Detrás de Dra. Casas está <strong>Densy Rivera</strong>, una ponceña que encontró una oportunidad en uno de los momentos más difíciles de su vida. Tras quedarse sin empleo comenzó limpiando casas, y descubrió una pasión.</p>
+        <p>Con esfuerzo, constancia y la confianza de sus clientas, esa pasión se convirtió en una empresa que hoy ha atendido <strong>más de 6,000 hogares en todo Puerto Rico</strong>. La responsabilidad, la puntualidad y la excelencia siguen siendo el corazón de todo lo que hacemos.</p>
+        <div><a class="btn btn-primary" href="#cotizar">Quiero mi cotización</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="como" data-say="Así de fácil">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cómo funciona</p>
+        <h2>De tu WhatsApp a una casa limpia, en tres pasos.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h3>Cotiza en minutos</h3><p>Llena el formulario de abajo y te contactamos por WhatsApp o llamada. Puedes enviarnos fotos o videos de las áreas. También cotizamos por videollamada.</p></div>
+        <div class="step"><span class="n">2</span><h3>Reserva tu fecha</h3><p>Confirmas con un depósito del 30% del servicio. Si Dra. Casas necesita mover la cita, tu depósito pasa a la nueva fecha sin penalidad.</p></div>
+        <div class="step"><span class="n">3</span><h3>Llegamos y limpiamos</h3><p>No hace falta que estés en casa. Al volver, abres la puerta y la encuentras limpia, ordenada y lista para disfrutar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0" data-say="Tu privacidad es primero">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Tu casa, tus reglas</p>
+        <h2>Entramos a tu hogar con respeto.</h2>
+      </div>
+      <div class="trust">
+        <div class="t-hero">
+          <svg class="van" viewBox="0 0 220 120" aria-hidden="true"><rect x="10" y="30" width="140" height="62" rx="14" fill="#2B4A6E"/><path d="M150 46 H184 L206 70 V92 H150Z" fill="#2B4A6E"/><path d="M158 52 H180 L196 70 H158Z" fill="#9ED9FC" opacity=".6"/><circle cx="50" cy="96" r="14" fill="#0F2238" stroke="#9ED9FC" stroke-width="5"/><circle cx="170" cy="96" r="14" fill="#0F2238" stroke="#9ED9FC" stroke-width="5"/><path d="M40 60 h70" stroke="#9ED9FC" stroke-width="3" stroke-dasharray="6 8" stroke-linecap="round"/></svg>
+          <h3>Discreción total.</h3>
+          <p>Si prefieres que el equipo llegue sin uniforme o sin vehículo rotulado, solo dilo. Respetamos tu decisión, y puedes pedirlo desde el formulario.</p>
+        </div>
+        <div class="t-item"><h3>Fotos solo con tu permiso</h3><p>No tomamos ni publicamos fotos o videos de tu hogar sin tu autorización.</p></div>
+        <div class="t-item"><h3>Tu información es privada</h3><p>Lo que compartes con nosotros se usa únicamente para darte el servicio.</p></div>
+      </div>
+      <div class="rules">
+        <div class="rule"><b>30%</b><span>Depósito para reservar</span><p>Confirma tu fecha y la apartamos para ti.</p></div>
+        <div class="rule"><b>48 h</b><span>Aviso para cancelar</span><p>Con menos aviso el depósito no se devuelve, pero puedes reprogramar una vez.</p></div>
+        <div class="rule"><b>15 min</b><span>Tiempo de espera</span><p>Si no podemos comenzar en ese tiempo, la cita se cancela según la política de depósito.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec quote" id="cotizar" data-say="¡Aquí es! Cuéntame de tu casa">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cotización gratis</p>
+        <h2>Cuéntanos de tu casa.</h2>
+        <p>Completa tus datos y Dra. Casas se comunicará contigo, mayormente por WhatsApp o por llamada. No realizamos cotizaciones presenciales.</p>
+      </div>
+      <div class="q-grid">
+        <form class="card" id="qform" novalidate>
+          <div class="row2">
+            <div class="field"><label for="f-nombre">Nombre</label><input type="text" id="f-nombre" autocomplete="name" placeholder="Ej. María Torres"><span class="err" id="e-nombre" hidden>Escribe tu nombre.</span></div>
+            <div class="field"><label for="f-muni">Municipio</label><input type="text" id="f-muni" list="munis" autocomplete="off" placeholder="Ej. Ponce"><span class="err" id="e-muni" hidden>Escribe tu municipio.</span></div>
+          </div>
+          <div class="field"><label for="f-tel">Teléfono <small>Para comunicarnos contigo</small></label><input type="text" id="f-tel" inputmode="tel" autocomplete="tel" placeholder="Ej. 787-555-1234"><span class="err" id="e-tel" hidden>Escribe un teléfono de 10 dígitos.</span></div>
+          <fieldset>
+            <legend class="legend">¿Qué servicio necesitas? <small>Puedes elegir varios</small></legend>
+            <div class="chips" id="svcs">
+              <label class="chip"><input type="checkbox" id="sv1" value="Limpieza residencial"><span>Limpieza residencial</span></label>
+              <label class="chip"><input type="checkbox" id="sv2" value="Limpieza comercial"><span>Limpieza comercial</span></label>
+              <label class="chip"><input type="checkbox" id="sv3" value="Shampoo de muebles"><span>Shampoo de muebles</span></label>
+              <label class="chip"><input type="checkbox" id="sv4" value="Fumigación"><span>Fumigación</span></label>
+              <label class="chip"><input type="checkbox" id="sv5" value="Pintura"><span>Pintura</span></label>
+              <label class="chip"><input type="checkbox" id="sv6" value="Limpieza de aires"><span>Aires acondicionados</span></label>
+            </div>
+            <span class="err" id="e-svc" hidden>Elige al menos un servicio.</span>
+          </fieldset>
+          <div class="row2">
+            <div class="field"><span class="legend" id="l-hab">Habitaciones</span><div class="stepper" role="group" aria-labelledby="l-hab"><button type="button" data-step="hab" data-d="-1" aria-label="Menos habitaciones">−</button><output id="hab">3</output><button type="button" data-step="hab" data-d="1" aria-label="Más habitaciones">+</button></div></div>
+            <div class="field"><span class="legend" id="l-ban">Baños</span><div class="stepper" role="group" aria-labelledby="l-ban"><button type="button" data-step="ban" data-d="-1" aria-label="Menos baños">−</button><output id="ban">2</output><button type="button" data-step="ban" data-d="1" aria-label="Más baños">+</button></div></div>
+          </div>
+          <fieldset>
+            <legend class="legend">Áreas adicionales <small>Si aplica</small></legend>
+            <div class="chips" id="areas">
+              <label class="chip"><input type="checkbox" id="ar1" value="Closets"><span>Closets</span></label>
+              <label class="chip"><input type="checkbox" id="ar2" value="Ventanas"><span>Ventanas</span></label>
+              <label class="chip"><input type="checkbox" id="ar3" value="Gabinetes"><span>Gabinetes</span></label>
+              <label class="chip"><input type="checkbox" id="ar4" value="Horno"><span>Horno</span></label>
+              <label class="chip"><input type="checkbox" id="ar5" value="Organización"><span>Organización</span></label>
+              <label class="chip"><input type="checkbox" id="ar6" value="Marquesina"><span>Marquesina</span></label>
+              <label class="chip"><input type="checkbox" id="ar7" value="Balcón"><span>Balcón</span></label>
+            </div>
+          </fieldset>
+          <div class="field"><label for="f-pref">Preferencias o solicitudes especiales <small>Opcional</small></label><textarea id="f-pref" placeholder="Ej. Tengo mascotas, prefiero productos sin olor fuerte…"></textarea></div>
+          <div style="display:grid;gap:14px">
+            <label class="toggle"><input type="checkbox" id="f-disc"><i></i><span><b>Prefiero discreción</b>Equipo sin uniforme ni vehículo rotulado.</span></label>
+            <label class="toggle"><input type="checkbox" id="f-video"><i></i><span><b>Prefiero cotizar por videollamada</b>Te mostramos la casa en vivo.</span></label>
+          </div>
+          <div class="send-row">
+            <a class="btn btn-primary" id="send" href="https://wa.me/19392338521" target="_blank" rel="noopener">Solicitar cotización</a>
+            <p class="fine">Dra. Casas se comunicará contigo, mayormente por WhatsApp o por llamada. Tu solicitud se abre en WhatsApp: solo toca enviar y, si quieres, añade fotos o videos de las áreas.</p>
+          </div>
+        </form>
+        <aside class="preview" aria-label="Vista previa del mensaje">
+          <div class="phone">
+            <div class="phone-top"><span class="av"><svg viewBox="0 0 200 220" aria-hidden="true" class="mini-m"></svg></span><span><b>Dra. Casas</b><small>Cuenta de empresa</small></span></div>
+            <div class="chat"><div class="bubble" id="bubble"></div></div>
+          </div>
+          <p class="fine">Así le llegará tu solicitud a Dra. Casas.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><h3>Dra. Casas</h3><p>Limpieza profesional para tu hogar. Técnicas especializadas. Toda la isla.</p></div>
+    <div><h4>WhatsApp</h4><p class="num">939-233-8521</p><p><a href="https://wa.me/19392338521" target="_blank" rel="noopener">Escribir ahora</a></p></div>
+    <div><h4>Síguenos</h4><p><a href="https://www.instagram.com/dra.casaspr/" target="_blank" rel="noopener">@dra.casaspr</a></p><p>Facebook: Dra. Casas PR</p></div>
+    <div class="credit"><span>© 2026 Dra. Casas · Puerto Rico</span><span>Página por En El Mapa</span></div>
+  </div>
+</footer>
+
+<a class="buddy" id="buddy" href="#cotizar" aria-label="Ir a la cotización">
+  <span class="say" id="say">¡Cotiza aquí!</span>
+  <svg viewBox="0 0 220 220" aria-hidden="true" id="buddySvg"></svg>
+</a>
+
+<datalist id="munis"></datalist>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1 · Un solo dibujo de la nubecita, reutilizado en todas partes */
+  const tpl = $('#mascot').innerHTML;
+  document.querySelectorAll('.mini-m, .art-m').forEach(s => s.innerHTML = tpl);
+  $('#m').innerHTML = tpl;
+  $('#buddySvg').innerHTML = '<g transform="translate(10 6)">' + tpl + '</g>';
+
+  /* 2 · La escena: el scroll es la "línea de tiempo" de la limpieza */
+  const scene = $('#scene'), stage = $('#stage'), room = $('#room');
+  const m = $('#mWrap'), arm = $('#m .arm-r'), foam = $('#foam'), dust = $('#dust');
+  const dirt = [...document.querySelectorAll('.dirt')].map(el => ({ el, x: +el.dataset.x, pick: el.classList.contains('pick'), web: el.classList.contains('web'), jump: !!el.dataset.jump }));
+  const sparks = [...document.querySelectorAll('.spark')];
+  const frame = $('#frame'), pct = $('#pct'), bar = $('#barfill'), status = $('#status'), hint = $('#hint'), done = $('#done'), h1em = $('.copy h1 em');
+  const mobile = matchMedia('(max-width: 640px)');
+  let lastP = 0, dir = 1;
+
+  function draw() {
+    const r = scene.getBoundingClientRect();
+    const total = scene.offsetHeight - innerHeight;
+    const p = reduce ? 1 : clamp(-r.top / Math.max(total, 1));
+    if (p > lastP + 0.0005) dir = 1; else if (p < lastP - 0.0005) dir = -1;
+    lastP = p;
+
+    // posición de la nubecita: de la puerta (70) al otro lado (730)
+    const mx = 70 + 660 * clamp((p - 0.04) / 0.76);
+    let sum = 0, scrub = null;
+    dirt.forEach(d => {
+      const c = d.web ? clamp((p - 0.84) / 0.08) : clamp((mx - (d.x - 60)) / 80);
+      d.c = c; sum += c;
+      if (d.pick) d.el.style.transform = `translate(${c * -20}px, ${c * -50}px) scale(${1 - c * 0.9})`;
+      d.el.style.opacity = 1 - c;
+      d.el.style.transformBox = 'fill-box'; d.el.style.transformOrigin = 'center';
+      if (c > 0 && c < 1 && !d.web) scrub = d;
+    });
+    const clean = sum / dirt.length;
+    frame.style.transform = `rotate(${(1 - dirt[0].c) * -9}deg)`;
+    dust.setAttribute('opacity', (0.24 * (1 - clean)).toFixed(3));
+    sparks.forEach(s => { const on = dirt[+s.dataset.for].c > 0.98; s.setAttribute('opacity', on ? 1 : 0); s.classList.toggle('on', on); });
+
+    // saltito para alcanzar la ventana + rebote al caminar
+    const dj = mx - 600, jy = Math.abs(dj) < 60 ? -70 * Math.cos(dj / 60 * Math.PI / 2) : 0;
+    const bob = -Math.abs(Math.sin(mx / 15)) * 6;
+    const end = p > 0.88;
+    const s = 0.62, flip = end ? 1 : dir;
+    m.setAttribute('transform', `translate(${mx} ${468 + jy + bob}) scale(${flip * s} ${s}) translate(-100 -208)`);
+    arm.setAttribute('transform', scrub ? `rotate(${Math.sin(mx * 0.45) * 30} 168 112)` : (end ? `rotate(${-20 + Math.sin(p * 90) * 18} 168 112)` : ''));
+    if (scrub) {
+      foam.setAttribute('transform', `translate(${scrub.x + 10} ${scrub.jump ? 150 : (scrub.x < 250 ? 250 : scrub.x < 450 ? 310 : 450)})`);
+      foam.setAttribute('opacity', 1);
+    } else foam.setAttribute('opacity', 0);
+
+    done.setAttribute('opacity', end ? 1 : 0);
+    done.setAttribute('transform', `translate(${mx - 140} ${300 + bob})`);
+
+    const v = Math.round(clean * 100);
+    pct.textContent = v + '%';
+    bar.style.setProperty('--m', v);
+    h1em.style.setProperty('--shine', clean > 0.99 ? 1 : 0);
+    status.textContent = v < 5 ? 'Así encontramos muchas casas. Desliza y mira.' : v < 45 ? 'Manos a la obra: manchas, polvo y desorden.' : v < 99 ? 'Casi lista. Falta poco.' : '¡Como nueva! Así puede quedar la tuya.';
+    hint.style.opacity = p > 0.03 ? 0 : 1;
+
+    // En teléfono la sala es más ancha que la pantalla: la "cámara" sigue a la nubecita
+    if (mobile.matches) {
+      const W = room.clientWidth, w = stage.clientWidth;
+      room.style.transform = `translateX(${clamp(w / 2 - mx / 800 * W, w - W, 0)}px)`;
+    } else room.style.transform = '';
+  }
+
+  /* 3 · La nubecita que te acompaña por la página */
+  const buddy = $('#buddy'), say = $('#say');
+  let lastY = scrollY, tilt = 0, walkT;
+  function moveBuddy() {
+    const sr = scene.getBoundingClientRect();
+    const on = sr.bottom < innerHeight * 0.55;
+    buddy.classList.toggle('on', on);
+    const vy = scrollY - lastY; lastY = scrollY;
+    tilt += (clamp(vy * 0.6, -16, 16) - tilt) * 0.2;
+    if (Math.abs(vy) > 1) { buddy.classList.add('walk'); clearTimeout(walkT); walkT = setTimeout(() => buddy.classList.remove('walk'), 160); }
+    if (mobile.matches) { buddy.style.transform = `rotate(${tilt * 0.5}deg)`; return; }
+    const start = scene.offsetTop + scene.offsetHeight - innerHeight;
+    const prog = clamp((scrollY - start) / Math.max(document.documentElement.scrollHeight - innerHeight - start, 1));
+    const top = innerHeight * (0.16 + prog * 0.6);
+    buddy.style.transform = `translateY(${top}px) rotate(${tilt}deg)`;
+  }
+
+  let ticking = false;
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(() => { draw(); moveBuddy(); ticking = false; }); } }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  draw(); moveBuddy();
+
+  // Lo que dice la nubecita cambia según la sección
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && say.textContent !== e.target.dataset.say) {
+      say.textContent = e.target.dataset.say; say.classList.remove('pop'); void say.offsetWidth; say.classList.add('pop');
+    }
+  }), { rootMargin: '-45% 0px -45% 0px' });
+  document.querySelectorAll('[data-say]').forEach(s => io.observe(s));
+
+  // Entradas suaves solo para lo que está fuera de pantalla al cargar
+  if (!reduce) {
+    const rise = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rise.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.sec-head, .svc, .step, .t-hero, .t-item, .rule, .story-art, .story .txt, form.card, .preview').forEach((el, i) => {
+      if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); el.style.transitionDelay = (i % 3) * 70 + 'ms'; rise.observe(el); }
+    });
+  }
+
+  /* 4 · Cotizador → WhatsApp */
+  const MUNIS = 'Adjuntas,Aguada,Aguadilla,Aguas Buenas,Aibonito,Añasco,Arecibo,Arroyo,Barceloneta,Barranquitas,Bayamón,Cabo Rojo,Caguas,Camuy,Canóvanas,Carolina,Cataño,Cayey,Ceiba,Ciales,Cidra,Coamo,Comerío,Corozal,Culebra,Dorado,Fajardo,Florida,Guánica,Guayama,Guayanilla,Guaynabo,Gurabo,Hatillo,Hormigueros,Humacao,Isabela,Jayuya,Juana Díaz,Juncos,Lajas,Lares,Las Marías,Las Piedras,Loíza,Luquillo,Manatí,Maricao,Maunabo,Mayagüez,Moca,Morovis,Naguabo,Naranjito,Orocovis,Patillas,Peñuelas,Ponce,Quebradillas,Rincón,Río Grande,Sabana Grande,Salinas,San Germán,San Juan,San Lorenzo,San Sebastián,Santa Isabel,Toa Alta,Toa Baja,Trujillo Alto,Utuado,Vega Alta,Vega Baja,Vieques,Villalba,Yabucoa,Yauco'.split(',');
+  $('#munis').innerHTML = MUNIS.map(n => `<option value="${n}">`).join('');
+
+  const PHONE = '19392338521'; // ← número que recibe las cotizaciones
+  const form = $('#qform'), send = $('#send'), bubble = $('#bubble');
+  const counts = { hab: 3, ban: 2 };
+  document.querySelectorAll('[data-step]').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.step; counts[k] = clamp(counts[k] + +b.dataset.d, 0, 12); $('#' + k).textContent = counts[k]; build();
+  }));
+  const vals = sel => [...document.querySelectorAll(sel + ' input:checked')].map(i => i.value);
+
+  function build() {
+    const tel = $('#f-tel').value.trim(), n = $('#f-nombre').value.trim(), mu = $('#f-muni').value.trim(), sv = vals('#svcs'), ar = vals('#areas'), pref = $('#f-pref').value.trim();
+    const L = ['¡Hola Dra. Casas! Quiero solicitar una cotización.', ''];
+    L.push('• Nombre: ' + (n || '…'));
+    L.push('• Municipio: ' + (mu || '…'));
+    L.push('• Teléfono: ' + (tel || '…'));
+    L.push('• Servicio: ' + (sv.length ? sv.join(', ') : '…'));
+    L.push(`• Habitaciones: ${counts.hab} · Baños: ${counts.ban}`);
+    if (ar.length) L.push('• Áreas adicionales: ' + ar.join(', '));
+    if (pref) L.push('• Preferencias: ' + pref);
+    if ($('#f-disc').checked) L.push('• Prefiero equipo sin uniforme ni vehículo rotulado.');
+    if ($('#f-video').checked) L.push('• Me gustaría cotizar por videollamada.');
+    L.push('', 'Les envío fotos o videos de las áreas a continuación.');
+    const msg = L.join('\n');
+    bubble.textContent = msg;
+    send.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+    return { n, mu, sv, tel };
+  }
+  form.addEventListener('input', build);
+  form.addEventListener('change', build);
+  form.addEventListener('submit', e => e.preventDefault());
+  send.addEventListener('click', e => {
+    const { n, mu, sv, tel } = build();
+    const telOk = tel.replace(/\D/g, '').length >= 10;
+    $('#e-nombre').hidden = !!n; $('#e-muni').hidden = !!mu; $('#e-tel').hidden = telOk; $('#e-svc').hidden = sv.length > 0;
+    if (!n || !mu || !telOk || !sv.length) {
+      e.preventDefault();
+      (!n ? $('#f-nombre') : !mu ? $('#f-muni') : !telOk ? $('#f-tel') : $('#sv1')).focus();
+    }
+  });
+  build();
+})();
+</script>
+
+<!-- En El Mapa: formulario oculto para las estadísticas del aviso (Netlify lo registra al publicar) -->
+<form name="enelmapa-estadisticas" data-netlify="true" netlify-honeypot="bot-field" hidden style="display:none" aria-hidden="true">
+  <input name="visita"><input name="visitante"><input name="nuevo"><input name="sitio"><input name="aparato">
+  <input name="vio"><input name="cerro"><input name="llamar"><input name="instagram"><input name="otra_propuesta"><input name="segundos">
+  <input name="bot-field">
+</form>
+<script>
+/* El aviso de En El Mapa sale cuando termina la escena de limpieza (no la interrumpe). */
+(function(){var s=document.getElementById('scene');if(!s)return;var u=Math.max(60,s.offsetHeight-innerHeight-40);window.EnElMapaAviso=Object.assign(window.EnElMapaAviso||{},{umbral:u});})();
+</script>
+<script src="/enelmapa-aviso.js" defer data-estadisticas="netlify" data-sitio="dracasas"></script>
+</body>
+</html>
